@@ -8,7 +8,7 @@
   <form class="col-md-12">
     <div class="form-group">
       <label for="territory-name">Name</label>
-      <input class="form-control" name="territory-name" [(ngModel)]="territory.name" placeholder="Name or number"/>
+      <input class="form-control" name="territory-name" [(ngModel)]="territory.name" placeholder="Territory number"/>
     </div>
     <div class="form-group">
       <label for="territory-state">State</label>
@@ -16,7 +16,7 @@
     </div>
     <div class="form-group">
       <label for="territory-proclaimer">Proclaimer</label>
-      <input class="form-control" name="territory-proclaimer" [(ngModel)]="territory.proclaimer" placeholder="Peyret"/>
+      <input class="form-control" name="territory-proclaimer" [(ngModel)]="territory.proclaimer" placeholder="Name"/>
     </div>
     <button class="btn btn-primary" *ngIf="!territory._id" (click)="createTerritory(territory)">Create</button>
     <button class="btn btn-info" *ngIf="territory._id" (click)="updateTerritory(territory)">Update</button>
