@@ -29,7 +29,7 @@ mongodb.MongoClient.connect(process.env.MONGODB_URI || "mongodb://localhost:2701
   // Initialize the app.
   var server = app.listen(process.env.PORT || 8080, function () {
     var port = server.address().port;
-    console.log("Territoires now running on port", port);
+    console.log("Territoires rocks !!! on port", port);
   });
 });
 
