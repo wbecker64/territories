@@ -12,11 +12,11 @@
     <button class="btn btn-warning" (click)="createNewTerritory()">New territory</button>
   </div>
   <div class="col-md-5 col-md-offset-2">
-    <contact-details
-      [contact]="selectedTerritory"
+    <app-territory-details
+      [territory]="selectedTerritory"
       [createHandler]="addTerritory"
       [updateHandler]="updateTerritory"
       [deleteHandler]="deleteTerritory">
-    </contact-details>
+    </app-territory-details>
   </div>
 </div>

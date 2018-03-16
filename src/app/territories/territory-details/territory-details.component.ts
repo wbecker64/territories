@@ -33,7 +33,7 @@ export class TerritoryDetailsComponent {
     });
   }
 
-  deleteContact(territoryId: String): void {
+  deleteTerritory(territoryId: String): void {
     this.territoryService.deleteTerritory(territoryId).then((deletedTerritoryId: String) => {
       this.deleteHandler(deletedTerritoryId);
     });
