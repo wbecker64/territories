@@ -90,7 +90,9 @@ app.put("/api/territories/:id", function(req, res) {
   var updateDoc = req.body;
   delete updateDoc._id;
 
-  db.collection(TERRITORIES_COLLECTION).updateOne({_id: new ObjectID(req.params.id)}, updateDoc, function(err, territory) {
+  console.log(updateDoc);
+
+  db.collection(TERRITORIES_COLLECTION).updateOne({_id: new ObjectID(req.params.id)}, {$set: updateDoc}, function(err, territory) {
     if (err) {
       handleError(res, err.message, "Failed to update territory");
     } else {
