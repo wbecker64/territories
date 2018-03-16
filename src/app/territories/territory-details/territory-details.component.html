@@ -1,0 +1,25 @@
+<div *ngIf="territory" class="row">
+  <div class="col-md-12">
+    <h2 *ngIf="territory._id">Territory Details</h2>
+    <h2 *ngIf="!territory._id">New Territory</h2>
+  </div>
+</div>
+<div *ngIf="territory" class="row">
+  <form class="col-md-12">
+    <div class="form-group">
+      <label for="territory-name">Name</label>
+      <input class="form-control" name="territory-name" [(ngModel)]="territory.name" placeholder="Name or number"/>
+    </div>
+    <div class="form-group">
+      <label for="territory-state">State</label>
+      <input class="form-control" name="territory-state" [(ngModel)]="territory.state" placeholder="in or out"/>
+    </div>
+    <div class="form-group">
+      <label for="territory-proclaimer">Proclaimer</label>
+      <input class="form-control" name="territory-proclaimer" [(ngModel)]="territory.proclaimer" placeholder="Peyret"/>
+    </div>
+    <button class="btn btn-primary" *ngIf="!territory._id" (click)="createTerritory(territory)">Create</button>
+    <button class="btn btn-info" *ngIf="territory._id" (click)="updateTerritory(territory)">Update</button>
+    <button class="btn btn-danger" *ngIf="territory._id" (click)="deleteTerritory(territory._id)">Delete</button>
+  </form>
+</div>
