@@ -57,11 +57,11 @@ app.post("/api/territories", function(req, res) {
     handleError(res, "Invalid territory input", "Must provide a name.", 400);
   }
 
-  db.collection(TERRITORIES_COLLECTION).insertOne(newTerritory, function(err, doc) {
+  db.collection(TERRITORIES_COLLECTION).insertOne(newTerritory, function(err, territory) {
     if (err) {
       handleError(res, err.message, "Failed to create new territory.");
     } else {
-      res.status(201).json(doc.ops[0]);
+      res.status(201).json(territory.ops[0]);
     }
   });
 });
@@ -73,10 +73,35 @@ app.post("/api/territories", function(req, res) {
  */
 
 app.get("/api/territories/:id", function(req, res) {
+  db.collection(TERRITORIES_COLLECTION).findOne({ _id: new ObjectID(req.params.id) }, function(err, territory) {
+    if (err) {
+      handleError(res, err.message, "Failed to get territory");
+    } else {
+      res.status(200).json(territory);
+    }
+  });
 });
 
 app.put("/api/territories/:id", function(req, res) {
+  var updateDoc = req.body;
+  delete updateDoc._id;
+
+  db.collection(TERRITORIES_COLLECTION).updateOne({_id: new ObjectID(req.params.id)}, updateDoc, function(err, territory) {
+    if (err) {
+      handleError(res, err.message, "Failed to update territory");
+    } else {
+      updateDoc._id = req.params.id;
+      res.status(200).json(updateDoc);
+    }
+  });
 });
 
 app.delete("/api/territories/:id", function(req, res) {
+  db.collection(TERRITORIES_COLLECTION).deleteOne({_id: new ObjectID(req.params.id)}, function(err, territory) {
+    if (err) {
+      handleError(res, err.message, "Failed to delete territory");
+    } else {
+      res.status(200).json(req.params.id);
+    }
+  });
 });
